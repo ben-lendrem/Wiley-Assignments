@@ -1,0 +1,93 @@
+A place to hold code that I don't like but am not sure if I want to delete yet
+
+
+*******************************EditDVD CODE*************************************************
+
+//Setup input for the user
+        Scanner input = new Scanner(System.in);
+        System.out.printf("Please enter which field you'd like to edit:\n" +
+                "1. Title\n" +
+                "2. Release Data\n" +
+                "3. Age Rating\n" +
+                "4. Director\n" +
+                "5. Studio\n" +
+                "6. Note\n");
+        System.out.printf("Enter corresponding number 1 - 6: ");
+        int choice = -1;
+        //try for user input choice
+        try {
+            choice = input.nextInt();
+            if (choice < 1 || choice > 6) {
+                throw new InvalidInputException("The choice entered was not between 1 and 6!");
+            }
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
+            throw new InvalidInputException("User inputted an invalid value!", e);
+        } catch (InvalidInputException e) {
+            e.printStackTrace();
+            throw e;
+        }
+        //user has made a valid choice, onto editing selected attribute
+        switch(choice) {
+            case 1:
+                String newTitle;
+                try {
+                    System.out.printf("Please enter new title: ");
+                    newTitle = Input.getUserString();
+                    this.title = newTitle;
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 2:
+                String newRelease;
+                try {
+                    System.out.printf("Please enter new release date (format dd/mm/yyyy): ");
+                    newRelease = Input.getUserString();
+                    this.releaseDate = newRelease;
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 3:
+                String newAgeRating;
+                try {
+                    System.out.printf("Please enter new age rating: ");
+                    newAgeRating = Input.getUserString();
+                    this.ageRating = newAgeRating;
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 4:
+                String newDirector;
+                try {
+                    System.out.printf("Please enter new director name: ");
+                    newDirector = Input.getUserString();
+                    this.director = newDirector;
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 5:
+                String newStudio;
+                try {
+                    System.out.printf("Please enter new studio name: ");
+                    newStudio = Input.getUserString();
+                    this.studio = newStudio;
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 6:
+                String newNote;
+                try {
+                    System.out.printf("Please enter new note: ");
+                    newNote = Input.getUserString();
+                    this.note = newNote;
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                }
+        }
+
+********************************************************************************************************

@@ -1,49 +1,28 @@
 package Java;
 
+import Java.Errors.InvalidInputException;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+enum DVDAttribute {
+    TITLE,
+    RELEASE,
+    AGE,
+    DIR,
+    STUDIO,
+    NOTE
+}
+
 public class DVD {
     private String title = null;
-    private String releaseDate = "01/01/1900";
+    private String releaseDate = "01/01/1800";
     private String ageRating = "U";
     private String director = null;
     private String studio = null;
     private String note = null;
 
     public DVD() {}
-
-    public DVD(boolean userInit) {
-        if (userInit) {
-            try {
-                Scanner input = new Scanner(System.in);
-                System.out.printf("Enter DVD title: ");
-                this.title = input.nextLine();
-                System.out.printf("Enter DVD release date:\n" +
-                        "Day: ");
-                String day = input.nextLine();
-                System.out.printf("Month: ");
-                String month = input.nextLine();
-                System.out.printf("Year: ");
-                String year = input.nextLine();
-                this.releaseDate = (day + "/" + month + "/" + year);
-                System.out.printf("Enter DVD age rating: ");
-                this.ageRating = input.nextLine();
-                System.out.printf("Enter DVD director: ");
-                this.director = input.nextLine();
-                System.out.printf("Enter DVD studio: ");
-                this.studio = input.nextLine();
-                System.out.printf("Enter DVD note: ");
-                this.note = input.nextLine();
-                System.out.printf("DVD entered successfully! New DVD details: \n%s", this.toString());
-            } catch (InputMismatchException e) {
-                e.printStackTrace();
-                System.out.println("You value you entered was invalid! DVD creation unsuccessful.");
-
-            }
-
-        }
-    }
 
     public DVD(String title, String releaseDate, String ageRating,
                String director, String studio, String note) {
@@ -55,7 +34,7 @@ public class DVD {
         this.note = note;
     }
 
-    private void ResetValues() { //called if DVD creation failed
+    private void ResetValues() { //Resets values of DVD to their defaults
         this.title = null;
         this.releaseDate = "01/01/1900";
         this.ageRating = "U";
@@ -65,10 +44,9 @@ public class DVD {
     }
 
 
-    public void EditDVD() {
+    public void Edit(DVDAttribute in) throws RuntimeException {
 
     }
-
     @Override
     public String toString() {
         return "DVD{" +
@@ -79,5 +57,57 @@ public class DVD {
                 ", studio: '" + studio + '\'' +
                 ", note: '" + note + '\'' +
                 '}';
+    }
+
+    /*
+    Get/Set methods for variables
+     */
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getAgeRating() {
+        return ageRating;
+    }
+
+    public void setAgeRating(String ageRating) {
+        this.ageRating = ageRating;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getStudio() {
+        return studio;
+    }
+
+    public void setStudio(String studio) {
+        this.studio = studio;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }
