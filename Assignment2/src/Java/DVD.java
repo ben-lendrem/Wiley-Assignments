@@ -49,14 +49,14 @@ public class DVD {
     }
     @Override
     public String toString() {
-        return "DVD{" +
+        return "{ " +
                 "title: '" + title + '\'' +
                 ", releaseDate: '" + releaseDate + '\'' +
                 ", ageRating: '" + ageRating + '\'' +
                 ", director: '" + director + '\'' +
                 ", studio: '" + studio + '\'' +
                 ", note: '" + note + '\'' +
-                '}';
+                " }";
     }
 
     /*
@@ -67,7 +67,7 @@ public class DVD {
         return title;
     }
 
-    public void setTitle(String title) {
+    private void setTitle(String title) {
         this.title = title;
     }
 
@@ -75,7 +75,7 @@ public class DVD {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    private void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -83,7 +83,7 @@ public class DVD {
         return ageRating;
     }
 
-    public void setAgeRating(String ageRating) {
+    private void setAgeRating(String ageRating) {
         this.ageRating = ageRating;
     }
 
@@ -91,7 +91,7 @@ public class DVD {
         return director;
     }
 
-    public void setDirector(String director) {
+    private void setDirector(String director) {
         this.director = director;
     }
 
@@ -99,7 +99,7 @@ public class DVD {
         return studio;
     }
 
-    public void setStudio(String studio) {
+    private void setStudio(String studio) {
         this.studio = studio;
     }
 
@@ -107,7 +107,7 @@ public class DVD {
         return note;
     }
 
-    public void setNote(String note) {
+    private void setNote(String note) {
         this.note = note;
     }
 }
