@@ -4,29 +4,25 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
-    public static String getUserString() throws RuntimeException {
-        Scanner input = new Scanner(System.in);
+    public static String getUserString(Scanner sInput) throws RuntimeException {
         try {
-            String out = input.nextLine();
+            String out = sInput.nextLine();
             return out;
         } catch (InputMismatchException e) {
             e.printStackTrace();
             throw e;
-        } finally {
-            input.close();
         }
     }
 
-    public static int getUserInt() {
-        Scanner input = new Scanner(System.in);
+    public static int getUserInt(Scanner iInput) {
         try {
-            int out = input.nextInt();
+            int out = iInput.nextInt();
+            iInput.nextLine();
             return out;
         } catch (InputMismatchException e) {
             e.printStackTrace();
             throw e;
-        } finally {
-            input.close();
         }
+
     }
 }

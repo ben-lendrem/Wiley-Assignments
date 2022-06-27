@@ -33,7 +33,7 @@ A place to hold code that I don't like but am not sure if I want to delete yet
                 String newTitle;
                 try {
                     System.out.printf("Please enter new title: ");
-                    newTitle = Input.getUserString();
+                    newTitle = Input.getUserString(input);
                     this.title = newTitle;
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -43,7 +43,7 @@ A place to hold code that I don't like but am not sure if I want to delete yet
                 String newRelease;
                 try {
                     System.out.printf("Please enter new release date (format dd/mm/yyyy): ");
-                    newRelease = Input.getUserString();
+                    newRelease = Input.getUserString(input);
                     this.releaseDate = newRelease;
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -53,7 +53,7 @@ A place to hold code that I don't like but am not sure if I want to delete yet
                 String newAgeRating;
                 try {
                     System.out.printf("Please enter new age rating: ");
-                    newAgeRating = Input.getUserString();
+                    newAgeRating = Input.getUserString(input);
                     this.ageRating = newAgeRating;
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -63,7 +63,7 @@ A place to hold code that I don't like but am not sure if I want to delete yet
                 String newDirector;
                 try {
                     System.out.printf("Please enter new director name: ");
-                    newDirector = Input.getUserString();
+                    newDirector = Input.getUserString(input);
                     this.director = newDirector;
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -73,7 +73,7 @@ A place to hold code that I don't like but am not sure if I want to delete yet
                 String newStudio;
                 try {
                     System.out.printf("Please enter new studio name: ");
-                    newStudio = Input.getUserString();
+                    newStudio = Input.getUserString(input);
                     this.studio = newStudio;
                 } catch (RuntimeException e) {
                     e.printStackTrace();
@@ -83,7 +83,7 @@ A place to hold code that I don't like but am not sure if I want to delete yet
                 String newNote;
                 try {
                     System.out.printf("Please enter new note: ");
-                    newNote = Input.getUserString();
+                    newNote = Input.getUserString(input);
                     this.note = newNote;
                 } catch (RuntimeException e) {
                     e.printStackTrace();

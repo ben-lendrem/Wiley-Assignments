@@ -1,8 +1,5 @@
 package Java;
 
-import Java.Errors.InvalidInputException;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 enum DVDAttribute {
@@ -44,8 +41,33 @@ public class DVD {
     }
 
 
-    public void Edit(DVDAttribute in) throws RuntimeException {
-
+    public void Edit(DVDAttribute in, Scanner input) throws RuntimeException {
+        switch (in) {
+            case TITLE:
+                System.out.print("Please enter a new title: ");
+                this.title = Input.getUserString(input);
+                break;
+            case RELEASE:
+                System.out.print("Please enter a new release date (format dd/mm/yyyy): ");
+                this.releaseDate = Input.getUserString(input);
+                break;
+            case AGE:
+                System.out.print("Please enter a new age rating: ");
+                this.ageRating = Input.getUserString(input);
+                break;
+            case DIR:
+                System.out.print("Please enter a new director: ");
+                this.director = Input.getUserString(input);
+                break;
+            case STUDIO:
+                System.out.print("Please enter a new studio: ");
+                this.studio = Input.getUserString(input);
+                break;
+            case NOTE:
+                System.out.print("Please enter a new user note: ");
+                this.note = Input.getUserString(input);
+        }
+        System.out.println("Edit complete! New DVD details:\n " + this);
     }
     @Override
     public String toString() {
@@ -109,5 +131,15 @@ public class DVD {
 
     private void setNote(String note) {
         this.note = note;
+    }
+
+    public boolean equalsNull() {
+        DVD nullDVD = new DVD();
+        return (this.title == nullDVD.title &&
+                this.releaseDate == nullDVD.releaseDate &&
+                this.ageRating == nullDVD.ageRating &&
+                this.director == nullDVD.director &&
+                this.studio == nullDVD.studio &&
+                this.note == nullDVD.note);
     }
 }
