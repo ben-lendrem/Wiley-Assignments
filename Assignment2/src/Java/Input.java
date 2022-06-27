@@ -6,8 +6,7 @@ import java.util.Scanner;
 public class Input {
     public static String getUserString(Scanner sInput) throws RuntimeException {
         try {
-            String out = sInput.nextLine();
-            return out;
+            return sInput.nextLine();
         } catch (InputMismatchException e) {
             e.printStackTrace();
             throw e;

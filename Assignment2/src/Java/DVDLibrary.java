@@ -54,7 +54,7 @@ public class DVDLibrary {
         }
     }
 
-    private boolean RemoveDVD(String byTitle) {
+    private void RemoveDVD(String byTitle) { //boolean return to exit function when dvd is removed
         //search through library
         Iterator<DVD> it = library.iterator();
         while (it.hasNext()) {
@@ -62,26 +62,14 @@ public class DVDLibrary {
             if (it.next().getTitle().equals(byTitle)) {
                 it.remove();
                 System.out.println("The DVD " + byTitle + " has been removed from the library!");
-                return true;
+                return;
             }
         }
         //if no DVD found, output no DVD with that name and return false
         System.out.println("No DVD was found in the library with that title!");
-        return false;
     }
 
-    private boolean RemoveDVD(int index) {
-        //remove DVD at index provided
-        try {
-            library.remove(index);
-            return true;
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("The index provided was invalid!");
-        }
-        return false;
-    }
-
-    private boolean EditDVD(DVD in) {
+    private void EditDVD(DVD in) {
         //Ask user which attribute they want to edit
         System.out.print("Please enter which attribute you would like to edit:\n" +
                 "1. Title\n" +
@@ -90,7 +78,7 @@ public class DVDLibrary {
                 "4. Director\n" +
                 "5. Studio\n" +
                 "6. User Note\n");
-        int choice = -1;
+        int choice;
         try {
             choice = Input.getUserInt(input);
             if (choice < 1 || choice > 6) {
@@ -116,17 +104,16 @@ public class DVDLibrary {
                         in.Edit(DVDAttribute.NOTE, input);
                         break;
                 }
-                return true;
+                return;
             }
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
-        return false;
     }
 
 
 
-    private boolean PrintDVD(String byTitle) {
+    private void PrintDVD(String byTitle) {
         //Search for DVD with matching title
         Iterator<DVD> it = library.iterator();
         while (it.hasNext()) {
@@ -135,17 +122,11 @@ public class DVDLibrary {
             if (current.getTitle().equals(byTitle)) {
                 System.out.println("DVD found in library. Details:\n" +
                         current);
-                return true;
+                return;
             }
         }
         //if not found, output dvd not found
         System.out.println("DVD with that title was not found in the library!");
-        return false;
-    }
-
-    private void PrintDVD(DVD in) {
-        //call in.toString
-        System.out.println("DVD " + in.toString());
     }
 
     private DVD SearchDVD(String byTitle) throws RuntimeException {
@@ -229,7 +210,7 @@ public class DVDLibrary {
         System.out.println("Please enter the name of the DVD you want to search for: ");
         String searchFor = Input.getUserString(input);
         DVD found = SearchDVD(searchFor);
-        if (found.equalsNull() == false) {
+        if (!found.equalsNull()) {
             System.out.println("DVD found in library. Details:\n" +
                     found);
 
@@ -250,7 +231,6 @@ public class DVDLibrary {
                 } catch (InputMismatchException e) {
                     System.out.println("\nThe value entered was not a number!");
                     input.next();
-                    continue;
                 }
             } while (choice < 1 || choice > 3);
             if (choice == 1) {
@@ -281,7 +261,7 @@ public class DVDLibrary {
         System.out.print("Please enter the name of the DVD you want to edit: ");
         String searchFor = Input.getUserString(input);
         DVD found = SearchDVD(searchFor);
-        if (found != (new DVD())) {
+        if (!found.equals(new DVD())) {
             EditDVD(found);
         } else {
             System.out.println("The DVD was not found in the library!");

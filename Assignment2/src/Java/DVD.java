@@ -1,5 +1,6 @@
 package Java;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 enum DVDAttribute {
@@ -31,14 +32,6 @@ public class DVD {
         this.note = note;
     }
 
-    private void ResetValues() { //Resets values of DVD to their defaults
-        this.title = null;
-        this.releaseDate = "01/01/1900";
-        this.ageRating = "U";
-        this.director = null;
-        this.studio = null;
-        this.note = null;
-    }
 
 
     public void Edit(DVDAttribute in, Scanner input) throws RuntimeException {
@@ -82,64 +75,40 @@ public class DVD {
     }
 
     /*
-    Get/Set methods for variables
+    Get methods for variables (Set is never done outside of DVD so no setters)
      */
 
     public String getTitle() {
         return title;
     }
 
-    private void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getReleaseDate() {
         return releaseDate;
-    }
-
-    private void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
     }
 
     public String getAgeRating() {
         return ageRating;
     }
 
-    private void setAgeRating(String ageRating) {
-        this.ageRating = ageRating;
-    }
-
     public String getDirector() {
         return director;
-    }
-
-    private void setDirector(String director) {
-        this.director = director;
     }
 
     public String getStudio() {
         return studio;
     }
 
-    private void setStudio(String studio) {
-        this.studio = studio;
-    }
-
     public String getNote() {
         return note;
     }
 
-    private void setNote(String note) {
-        this.note = note;
-    }
-
     public boolean equalsNull() {
         DVD nullDVD = new DVD();
-        return (this.title == nullDVD.title &&
-                this.releaseDate == nullDVD.releaseDate &&
-                this.ageRating == nullDVD.ageRating &&
-                this.director == nullDVD.director &&
-                this.studio == nullDVD.studio &&
-                this.note == nullDVD.note);
+        return (Objects.equals(this.title, nullDVD.title) &&
+                Objects.equals(this.releaseDate, nullDVD.releaseDate) &&
+                Objects.equals(this.ageRating, nullDVD.ageRating) &&
+                Objects.equals(this.director, nullDVD.director) &&
+                Objects.equals(this.studio, nullDVD.studio) &&
+                Objects.equals(this.note, nullDVD.note)); //Objects.equals was suggested
     }
 }
