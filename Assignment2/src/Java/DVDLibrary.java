@@ -7,19 +7,28 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
-
+/*
+DVDLibrary class stores the DVD library and provides the functionality required
+to view, add to, remove from, and edit it
+ */
 public class DVDLibrary {
     private ArrayList<DVD> library;
-    private Scanner input;
+    private Scanner input; //Stored and used as parameter for input functions to keep only one scanner open
+    // during program execution
+
 
     public DVDLibrary(String filepath) {
+        //Initialise scanner
         input = new Scanner(System.in);
+        //if a filepath is provided, initialise the library from that
         if (filepath != null) {
             library = LoadFromFile(filepath);
         } else {
             library = new ArrayList<DVD>();
         }
+        //run the library program
         Run();
+        //once execution is complete, save the library back to the file (catching IOException if saving fails)
         try {
             SaveToFile(filepath);
         } catch (IOException e) {
