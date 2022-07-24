@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="view" class="ui.VendingView" />
+
+    <bean id="itemIO" class="dao.VendingItemStorage">
+        <constructor-arg type="java.lang.String" value="vendingItems.txt" />
+    </bean>
+
+    <bean id="auditIO" class="dao.VendingAuditStorage">
+        <constructor-arg type="java.lang.String" value="vendingAuditLog.txt" />
+    </bean>
+
+    <bean id="controller" class="controller.VendingController">
+        <constructor-arg index="0" ref="view" />
+        <constructor-arg index="1" ref="itemIO" />
+        <constructor-arg index="2" ref="auditIO" />
+    </bean>
+
+
+</beans>
